@@ -336,7 +336,7 @@ jobs:
                   print(f'   ✂️ Splitting ({size_mb:.0f}MB) into {threshold_mb}MB parts...')
                   parent = filepath.parent
                   name = filepath.name
-                  subprocess.run(['zip', '-r', '-q', '-s', f'{threshold_mb}m', f'{name}.zip', name], cwd=parent, check=True)
+                  subprocess.run(['zip', '-r', '-q', '-s', str(threshold_mb), f'{name}.zip', name], cwd=parent, check=True)
                   filepath.unlink()
                   parts = sorted(parent.glob(f'{name}.z*'))
                   print(f'   ✅ Split into {len(parts)} parts')
